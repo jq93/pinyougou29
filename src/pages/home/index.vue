@@ -25,21 +25,19 @@
       </div>
     </div>
     <!-- 楼层 -->
-    <div class="topbar">
+    <div class="topbar" v-for="(item,index) in topbarList" :key="index">
       <!-- 标题 -->
       <div class="title">
-        <image src="https://img.alicdn.com/tfs/TB1qd8zQmzqK1RjSZPxXXc4tVXa-160-280.jpg_290x290q90.jpg_.webp"></image>
+        <image :src="item.floor_title.image_src" mode="aspectFit"></image>
       </div>
       <!-- 主体 -->
       <div class="content">
         <div class="left">
-          <image src="https://img.alicdn.com/imgextra/i4/6000000002624/TB2QYtubk7OyuJjSsplXXXqdpXa_!!0-tbCommonAudio.jpg_180x180q90.jpg_.webp"></image>
+          <image :src="item.product_list[0].image_src"  mode="aspectFit"></image>
         </div>
         <div class="right">
-          <image src="https://img.alicdn.com/imgextra/i1/3107144874/TB2i9NXbwkLL1JjSZFpXXa7nFXa_!!3107144874-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp"></image>
-           <image src="https://img.alicdn.com/imgextra/i1/3107144874/TB2i9NXbwkLL1JjSZFpXXa7nFXa_!!3107144874-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp"></image>
-            <image src="https://img.alicdn.com/imgextra/i1/3107144874/TB2i9NXbwkLL1JjSZFpXXa7nFXa_!!3107144874-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp"></image>
-            <image src="https://img.alicdn.com/imgextra/i1/3107144874/TB2i9NXbwkLL1JjSZFpXXa7nFXa_!!3107144874-0-beehive-scenes.jpg_180x180xzq90.jpg_.webp"></image>
+          <image v-if="subindex !=0" v-for="(subitem,subindex) in item.product_list" :key="subindex" src="subitem.product_list"></image>
+           
         </div>
       </div>
     </div>
@@ -54,7 +52,9 @@ export default {
     return {
       imgList: [],
       //导航区域
-      mainList:[]
+      mainList:[],
+      //楼层列表
+      topbarList:[]
     };
   },
   // 请求页面中的数据
@@ -69,7 +69,11 @@ export default {
     // console.log(this.imgList);
     var ress =await request("https://itjustfun.cn/api/public/v1/home/catitems")
     this.mainList =ress.data.data;
-    console.log(this.mainList);
+    // console.log(this.mainList);
+      var restopbarList =await request("https://itjustfun.cn/api/public/v1/home/floordata")
+     this.topbarList =restopbarList.data.data;
+    console.log(topbarList);
+    
     
   }
 };
