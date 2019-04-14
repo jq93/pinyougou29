@@ -29,6 +29,18 @@
 .slideshow swiper-item img {
   height: 340rpx;
 }
+.main {
+  display: flex;
+  height: 193rpx;
+  align-items: center;
+}
+.main .item {
+  width: 25%;
+}
+.main .item image {
+  width: 100%;
+  height: 128rpx;
+}
 .topbar .title {
   height: 88rpx;
   width: 100%;

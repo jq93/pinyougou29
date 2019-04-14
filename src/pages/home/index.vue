@@ -19,6 +19,11 @@
       </block>
     </swiper>
     <!-- 导航 -->
+    <div class="main">
+      <div class="item" v-for="(item,index) in mainList" :key="index">
+        <image :src="item.image_src" mode="aspectFit"></image>
+      </div>
+    </div>
     <!-- 楼层 -->
     <div class="topbar">
       <!-- 标题 -->
@@ -47,7 +52,9 @@ import request from "../../utils/request.js";
 export default {
   data() {
     return {
-      imgList: []
+      imgList: [],
+      //导航区域
+      mainList:[]
     };
   },
   // 请求页面中的数据
@@ -59,7 +66,11 @@ export default {
     // var {data} =res.data;
     // this.imgList =data;
     this.imgList = res.data.data;
-    console.log(this.imgList);
+    // console.log(this.imgList);
+    var ress =await request("https://itjustfun.cn/api/public/v1/home/catitems")
+    this.mainList =ress.data.data;
+    console.log(this.mainList);
+    
   }
 };
 </script>
