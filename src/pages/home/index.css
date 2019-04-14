@@ -1,28 +1,3 @@
-.search {
-  padding: 20rpx 16rpx;
-  background-color: #eb4450;
-}
-.search .search_input {
-  width: 100%;
-  height: 60rpx;
-  background-color: #fff;
-  position: relative;
-}
-.search .search_input .word {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.search .search_input .word icon {
-  margin-right: 10rpx;
-}
-.search .search_input .word span {
-  color: #bbb;
-  font-size: 20px;
-}
 .slideshow {
   height: 340rpx;
 }

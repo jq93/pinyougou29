@@ -1,15 +1,7 @@
 <template>
   <div>
     <!-- 搜索 -->
-    <div class="search">
-      <div class="search_input">
-        <input type="text">
-        <div class="word">
-          <icon type="search" size="20"></icon>
-          <span>搜索</span>
-        </div>
-      </div>
-    </div>
+   <topheader />
     <!-- 轮播图 -->
     <swiper indicator-dots autoplay circular class="slideshow">
       <block v-for="(item,index) in imgList" :key="index">
@@ -36,7 +28,7 @@
           <image :src="item.product_list[0].image_src"  mode="aspectFit"></image>
         </div>
         <div class="right">
-          <image v-if="subindex !=0" v-for="(subitem,subindex) in item.product_list" :key="subindex" src="subitem.product_list"></image>
+          <image v-if="subindex !=0" v-for="(subitem,subindex) in item.product_list" :key="subindex" :src="subitem.image_src"></image>
            
         </div>
       </div>
@@ -45,6 +37,7 @@
 </template>
 
 <script>
+import topheader from '../../components/topheader'
 //导入request方法
 import request from "../../utils/request.js";
 export default {
@@ -75,7 +68,11 @@ export default {
     console.log(topbarList);
     
     
+  },
+  components:{
+    topheader
   }
+
 };
 </script>
 
